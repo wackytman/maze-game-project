@@ -1,9 +1,9 @@
-import {Commands} from './commands.js';
+import {Terminal} from './terminal.js';
 $(function() {
 
 
-    var terminal = $('#terminal');
-    var commands = new Commands(this, terminal);
+    var terminalBox = $('#terminal');
+    var terminal = new Terminal(this, terminalBox);
     
     $(".blink").blink({delay: 500});
 
@@ -24,16 +24,28 @@ $(function() {
         }
       });
 
-    function terminalPushText(text){
-        terminal.append("<p class='col-12 m-0'>" + text + "</p>");
-    }
+
 
     function commandParser(input){
-        if(input in commands.command && input != 'vm'){
-            commands.command[input]();
+        var orginalInput = input
+        var command = input.split(" ", 1)
+        input = input.split(" ")
+        input.shift()
+        var args = input.join(" ");
+        // input = input.splice(0,0)
+        // console.log(input)
+        // if(input.lenght >= 1){
+
+        //     var args = input.join(" ")
+        // }
+        // console.log(args)
+        if(command in terminal.commands && input != 'vm'){
+            terminal.pushText("$ " + orginalInput);
+            terminal.commands[command].exec(args);
         }
         else{
-            terminalPushText("'" +input + "' is not a known command. Type help for list of commands")
+            terminal.pushText("$ " + orginalInput);
+            terminal.pushText("'" + command + "' is not a known command. Type help for list of terminal")
         }
     }
 })
