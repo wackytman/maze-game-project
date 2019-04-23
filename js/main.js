@@ -3,7 +3,7 @@ $(function() {
 
 
     var terminal = $('#terminal');
-    var commands = new Commands(terminal);
+    var commands = new Commands(this, terminal);
     
     $(".blink").blink({delay: 500});
 
@@ -29,7 +29,7 @@ $(function() {
     }
 
     function commandParser(input){
-        if(input in commands.command){
+        if(input in commands.command && input != 'vm'){
             commands.command[input]();
         }
         else{

@@ -1,8 +1,18 @@
 export class Commands {
-    constructor(termnial){
-        this.termnial = termnial
+    terminal = null;
+    constructor(instance, terminal){
+       
+        this.terminal = $(instance).find(terminal)[0]
+        console.log(this.terminal)
     }
     command = {
-        clear : function (){ this.termnial.empty()}
+        vm: this,
+        clear : {
+            exec: function (){
+                    console.log(this.vm.terminal)
+                    $(this.vm.terminal).empty();
+                },
+            description: 'Clear the terminal output window.'
+            }
     }
 }
