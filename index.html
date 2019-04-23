@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<meta charset=utf-8>
+        <title>My first three.js app</title>
+       
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+        </style>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/app.css">
+	</head>
+	<body>
+        <div class="row h-100">
+            <div id="text-box" class="col-12  my-auto">
+                <h1 class="mb-5 text-center">Maze Game</h1>
+                <div class="shadow w-50 mx-auto  p-3">
+                    <div id="terminal" class="row mh-25 overflow-scroll">
+
+                    </div>
+                    <div class="row">
+                        <label class="blink col-1 col-form-label pr-0">></label>
+                        <div class="col-11 input-container pl-0">
+                            <input id="input" class="form-control-plaintext" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <!-- Your custom script here -->
+		<script src="js/jquery-3.4.0.min.js"></script>
+		<script src="js/blink.js"></script>
+		<script type="module" src="js/input.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<!-- <script type="module" src="js/three.js"></script>
+            <script type="module" src="js/draw.js"></script> -->
+        </body>
+</html>
