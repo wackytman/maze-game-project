@@ -1,4 +1,4 @@
-export class character {
+export class Character {
     health = 0;
     damage = 0;
     name = 'ghost';
@@ -6,6 +6,7 @@ export class character {
     target = null;
     is_attacking = true;
     attacking = null
+    defeated = false;
     constructor(health, damage, name, items ){
         this.health = health;
         this.damage = damage;
@@ -35,8 +36,10 @@ export class character {
 
     damage(damageAmount){
         this.health -= damageAmount;
+        
         if(this.health <= 0 && this.attacking != null){
             this.stopAttack()
+            this.defeated = true;
         }
     }
 
@@ -47,17 +50,19 @@ export class character {
     
 }
 
-export class player extends character{
+export class Player extends Character{
+    terminal;
   constructor(health, damage, name, items,current_room, maze)  
   {
+      super(health, damage, name, items);
       this.current_room = current_room
       this.maze = maze;
-      super(health, damage, name, items);
   }
 
   changeRoom(room_id){
       if(room_id){
           this.current_room = this.maze.rooms[room_id];
+          this.terminal.pushText(this.current_room.description)
       }
       else{
           this.terminal.pushText("you walked into the wall...")

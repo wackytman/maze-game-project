@@ -55,6 +55,7 @@ export class Terminal {
 
     pushText(text){
         $(this.terminalBox).append(("<p class='col-12 m-0'>" + text + "</p>"));
+        $(this.terminalBox).scrollTop($(this.terminalBox)[0].scrollHeight);
     }
 
     refreshTerminalCommands() {
