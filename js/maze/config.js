@@ -49,7 +49,7 @@ export var config = {
                 exit_item: null
             },
             room_3 : {
-                description: 'You enter a room with 3 doors and there appears to be a long object in the center of the room',
+                description: 'A small cold room with a red glow coming from the corner',
                 items: {
                     super_health_potion : {
                         name: 'Super Health Potion',
@@ -92,7 +92,7 @@ export var config = {
                 exit_item: 'key_of_darkness'
             },
             room_5 : {
-                description: 'You enter a room with 3 doors and there appears to be a long object in the center of the room',
+                description: 'You enter a dusty room and what seems to be a concrete mount with an object sticking out in the center of the room',
                 items: {
                     sword : {
                         name: 'Dark Sword',

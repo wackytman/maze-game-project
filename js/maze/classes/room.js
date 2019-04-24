@@ -22,7 +22,7 @@ export class Room{
         this.terminal.pushText('There is ' + this.items.length + ' items in this room')
         if(this.items.length){
             this.items.forEach(item => {
-                this.terminal.pushText(item.name + ' - ' + item.description)
+                this.terminal.pushText("<strong>" + item.name + '</strong> - ' + item.description)
             });
         }
     }

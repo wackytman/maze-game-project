@@ -7,6 +7,42 @@ export  class MainGameClass {
     terminal = null
     old_commands = null;
 
+    commands = { 
+        move: {
+            exec: function(args) {
+                switch(args){
+                    case "north":
+                        this.vm.moveNorth();
+                        break;
+                    case "east":
+                        this.vm.moveEast();
+                        break;
+                    case "south":
+                        this.vm.moveSouth();
+                        break;
+                    case "west":
+                        this.vm.moveWest()
+                        break;
+
+
+                } 
+            },
+            description: "move [direction] - move player north, east, south or west"
+        },
+        doors: {
+            exec: function() {
+                this.vm.showDoors()
+            },
+            description: "doors - show doors in the room" 
+        },
+        items: {
+            exec: function() {
+                this.vm.showItems()
+            },
+            description: "items - show items in the room"
+        }
+    }
+
     constructor(terminal){
         this.terminal = terminal;
         this.start();
@@ -14,32 +50,10 @@ export  class MainGameClass {
 
     start() {
         this.terminal.pushText('Game booting');
-        var commands = { 
-            move: {
-                exec: function(args) {
-                    switch(args){
-                        case "north":
-                            this.vm.moveNorth();
-                            break;
-                        case "east":
-                            this.vm.moveEast();
-                            break;
-                        case "south":
-                            this.vm.moveSouth();
-                            break;
-                        case "west":
-                            this.vm.moveWest()
-                            break;
-
-
-                    } 
-                },
-                description: "move [direction] - move player north, east, south or west"
-            }
-        }
+        
         this.maze =  new Maze(config.maze, this.terminal),
         this.old_commands = this.terminal.commands;
-        this.terminal.commands = commands;
+        this.terminal.commands = this.commands;
         for(var command in this.terminal.commands){
             this.terminal.commands[command].vm = this;
         }
@@ -62,6 +76,14 @@ export  class MainGameClass {
     moveWest(){
         this.player.changeRoom(this.player.current_room.west_room_id)
     } 
+
+    showItems() {
+        this.player.current_room.showItems();
+    }
+
+    showDoors() {
+        this.player.current_room.showDoors();
+    }
 
     exit(terminal) {
         this.terminal.pushText('Game exiting');
