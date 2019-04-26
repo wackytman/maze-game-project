@@ -15,13 +15,15 @@ export class Maze {
         for(var room in this.config.rooms){
             var room_id = room;
             var room = this.config.rooms[room];
-
+            console.log(room)
             var enemies = [];
             for(var enemy in room.enemies){
+                
                 var enemy = room.enemies[enemy];
                 var items = this.loadItems(enemy.items)
                 var character = new Character(enemy.health,enemy.damage,enemy.name, items);
                 character.terminal = this.terminal
+                character.setEntryText(enemy.entry_text)
                 enemies.push(character);
             }
             var room_instance = new Room(room_id, room.description, this.loadItems(room.items),enemies, room.north_room_id, room.east_room_id, room.south_room_id, room.west_room_id, room.is_exit, room.exit_item)

@@ -14,7 +14,7 @@ export var config = {
                         uses: 10
                     }
                 },
-                emenies: [],
+                enemies: [],
                 north_room_id: 'room_2',
                 east_room_id: 'room_5',
                 south_room_id: 'room_3',
@@ -26,7 +26,7 @@ export var config = {
                 description: 'You enter a large room with 2 doors.',
                 items: {
                 },
-                emenies: [{
+                enemies: [{
                     health: 20,
                     damage: 2,
                     name: "Large Rodent",
@@ -58,7 +58,7 @@ export var config = {
                         effect_value: 200
                     }
                 },
-                emenies: [],
+                enemies: [],
                 north_room_id: 'room_1',
                 east_room_id: 0,
                 south_room_id: 0,
@@ -68,7 +68,7 @@ export var config = {
             },
             room_4 : {
                 description: 'You enter a room with 1 door and what appears to be an exit',
-                emenies: {ogre: {
+                enemies: {ogre: {
                     health: 300,
                     damage: 2,
                     name: "Dark Ogre",
@@ -103,7 +103,7 @@ export var config = {
                     },
                     
                 },
-                emenies: {
+                enemies: {
                     
                 },
                 north_room_id: 'room_2',

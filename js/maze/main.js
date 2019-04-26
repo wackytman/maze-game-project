@@ -40,12 +40,17 @@ export  class MainGameClass {
                 this.vm.showItems()
             },
             description: "items - show items in the room"
+        },
+        attack: {
+            exec: function(){
+                this.vm.attack()
+            },
+            description: "attack - Attacks the current target"
         }
     }
 
     constructor(terminal){
         this.terminal = terminal;
-        this.start();
     }
 
     start() {
@@ -58,7 +63,7 @@ export  class MainGameClass {
             this.terminal.commands[command].vm = this;
         }
         this.terminal.commands['game'] = this.old_commands['game'];
-        this.player = new Player(100, 2, 'tylah', [],this.maze.rooms['room_1'], this.maze);
+        this.player = new Player(100, 2, 'tylah', [],this.maze.rooms['room_1'], this.maze, true);
         this.player.terminal = this.terminal;
         console.log(this.player);
         console.log(this.maze);
@@ -84,9 +89,14 @@ export  class MainGameClass {
     showDoors() {
         this.player.current_room.showDoors();
     }
+    attack(){
+        this.player.attack(this.player.target);
+    }
 
-    exit(terminal) {
+    exit() {
         this.terminal.pushText('Game exiting');
+        console.log(this.old_commands)
+        console.log(this.terminal)
         this.terminal.commands = this.old_commands;
     } 
   };
