@@ -26,20 +26,20 @@ export class Maze {
                 character.setEntryText(enemy.entry_text)
                 enemies.push(character);
             }
-            var room_instance = new Room(room_id, room.description, this.loadItems(room.items),enemies, room.north_room_id, room.east_room_id, room.south_room_id, room.west_room_id, room.is_exit, room.exit_item)
+            var room_instance = new Room(room_id, room.description, this.loadItems(room.items),enemies, room.north_room_id, room.east_room_id, room.south_room_id, room.west_room_id, room.is_exit, room.exit_item, room.wealth_required)
             room_instance.terminal = this.terminal;
             this.rooms[room_id] = room_instance;
         }
     }
 
     loadItems(items_list){
-        var items = []
+        var items = {}
         for(var item in items_list){
             var item_id = item
             var item = items_list[item];
-            items.push(new Item(item_id, item.name,item.description, item.type,item.effect_value, item.uses))
+            items[item_id] = (new Item(item_id, item.name,item.description, item.type,item.effect_value, item.uses))
+            items[item_id].terminal = this.terminal;
         }
-        items.terminal = this.terminal;
         return items
     }
 }

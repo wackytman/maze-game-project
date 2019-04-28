@@ -85,11 +85,13 @@ export class Character {
 
 export class Player extends Character{
     terminal;
+    wealth = 0;
   constructor(health, damage, name, items,current_room, maze, isPlayer)  
   {
       super(health, damage, name, items, isPlayer);
       this.current_room = current_room
       this.maze = maze;
+
   }
 
   changeRoom(room_id){
@@ -107,6 +109,27 @@ export class Player extends Character{
             this.current_room.enemies[emeny].setTarget(this)
             this.current_room.enemies[emeny].attackLoop()
             this.target = this.current_room.enemies[emeny]
+          }
+      }
+  }
+  inventory(){
+      this.terminal.pushText("Items you carry: ");
+    for(var item in this.items) {
+        this.terminal.pushText("<strong>" + this.items[item].name + '</strong> -  Key : ' + this.items[item].item_id + " - " + this.items[item].description)
+    }
+    this.terminal.pushText("<strong>coins</strong> - " + this.wealth);
+  }
+  pickUpItems(){
+      for(var item in this.current_room.items) {
+          if(item == 'coins'){
+            this.wealth += this.current_room.items[item].effect_value;
+            this.terminal.pushText("Picked up " + this.current_room.items[item].name + " your total wealth is " + this.wealth)
+            this.current_room.items[item] = null 
+          }
+          else{
+              this.items[item] = this.current_room.items[item] 
+              this.terminal.pushText("Picked up " + this.current_room.items[item].name)
+              this.current_room.items[item] = null 
           }
       }
   }

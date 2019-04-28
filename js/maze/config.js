@@ -12,6 +12,13 @@ export var config = {
                         type: 'weapon',
                         effect_value: 2,
                         uses: 10
+                    },
+                    coins: { 
+                        name: 'coins',
+                        description: 'your wealth',
+                        type: 'weapon',
+                        effect_value: 100,
+                        uses: 10
                     }
                 },
                 enemies: [],
@@ -25,6 +32,13 @@ export var config = {
             room_2 : {
                 description: 'You enter a large room with 2 doors.',
                 items: {
+                    coins: { 
+                        name: 'coins',
+                        description: 'your wealth',
+                        type: 'weapon',
+                        effect_value: 100,
+                        uses: 10
+                    }
                 },
                 enemies: [{
                     health: 20,
@@ -36,7 +50,8 @@ export var config = {
                         description: 'Heals health by 20 points',
                         type: 'potion',
                         effect_value: 20,
-                        }
+                        },
+                        
                     },
                     entry_text: "You hear scratching from under the table and a large rat like creature appears ",
                     defeat_text: "A large screech comes from the rodent and you see something shining in its jaw"
@@ -55,7 +70,15 @@ export var config = {
                         name: 'Super Health Potion',
                         description: 'A red liquid that yeilds a mighty boost to ones wellbeing',
                         uses: 1,
+                        type: 'potion',
                         effect_value: 200
+                    },
+                    coins: { 
+                        name: 'coins',
+                        description: 'your wealth',
+                        type: 'weapon',
+                        effect_value: 100,
+                        uses: 10
                     }
                 },
                 enemies: [],
@@ -89,7 +112,8 @@ export var config = {
                 south_room_id: 0,
                 west_room_id: 0, 
                 is_exit: true,
-                exit_item: 'key_of_darkness'
+                exit_item: 'key_of_darkness',
+                wealth_required : 400
             },
             room_5 : {
                 description: 'You enter a dusty room and what seems to be a concrete mount with an object sticking out in the center of the room',
@@ -101,15 +125,22 @@ export var config = {
                         uses: 3,
                         effect_value: 100,
                     },
+                    coins: { 
+                        name: 'coins',
+                        description: 'your wealth',
+                        type: 'weapon',
+                        effect_value: 100,
+                        uses: 10
+                    }
                     
                 },
                 enemies: {
                     
                 },
                 north_room_id: 'room_2',
-                east_room_id: 'room_1',
+                east_room_id: 0,
                 south_room_id: 0,
-                west_room_id: 0, 
+                west_room_id: 'room_1', 
                 is_exit: false,
                 exit_item: null
             }
