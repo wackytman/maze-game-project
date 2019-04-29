@@ -81,6 +81,13 @@ export  class MainGameClass {
                 this.vm.terminal.pushText("Your current wealth is " + this.vm.player.wealth)
             },
             description: "wealth - list players current wealth"
+        },
+        name:{
+            
+            exec:function(args){
+                this.vm.player.name = args
+            },
+            description: "name [your name]- enter name of user"
         }
     }
 
@@ -90,6 +97,7 @@ export  class MainGameClass {
 
     start() {
         this.terminal.pushText('Game booting');
+        this.terminal.pushText('Enter name by calling "name" command default set to player1');
         
         this.maze =  new Maze(config.maze, this.terminal),
         this.old_commands = this.terminal.commands;
@@ -99,7 +107,7 @@ export  class MainGameClass {
         }
         this.terminal.commands['game'] = this.old_commands['game'];
         this.terminal.commands['help'] = this.old_commands['help'];
-        this.player = new Player(100, 2, 'tylah', [],this.maze.rooms['room_1'], this.maze, true);
+        this.player = new Player(100, 2, 'Player1', [],this.maze.rooms['room_1'], this.maze, true);
         this.player.terminal = this.terminal;
         this.terminal.pushText(this.player.current_room.description)
         console.log(this.player);

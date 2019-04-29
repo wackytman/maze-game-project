@@ -49,7 +49,7 @@ export class Room{
 
                 if(this.exit_item){
                     
-                    for(item in player.items){
+                    for(var item in player.items){
                         if(item == this.exit_item){
                             this.terminal.pushText('you Escaped') 
                             return true;

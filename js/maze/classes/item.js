@@ -28,7 +28,7 @@ export class Item {
             }
             if(this.uses ==0 ){
                 this.terminal.pushText(this.name = " Destroyed")
-                this.player.items[this.item_id] = null 
+                character.items[this.item_id] = null 
             }
             this.activated = true
         }

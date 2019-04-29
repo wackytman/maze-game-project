@@ -48,7 +48,7 @@ export class Terminal {
                     this.vm.game = new Game(this.vm, args);
                 }
             },
-            description:'game [game-name] - load game via its name'
+            description:'game [game-name] - load game via its name .e.g "game ./maze"'
 
         }
     }
